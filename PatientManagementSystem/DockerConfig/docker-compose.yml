@@ -1,0 +1,6 @@
+﻿services:
+  db:
+    build: ./mssql_database
+    container_name: PatientRecordsDB
+    ports:
+        - 1433:1433  

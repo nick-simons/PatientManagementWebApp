@@ -1,0 +1,22 @@
+﻿{
+  "patientRecords": [
+    {
+      "firstName": "Joe",
+      "lastName": "Montana",
+      "birthDate": "2003-04-23",
+      "gender": "M"
+    },
+    {
+      "firstName": "Bill",
+      "lastName": "Ruth",
+      "birthDate": "2007-04-23",
+      "gender": "M"
+    },
+    {
+      "firstName": "Sarah",
+      "lastName": "Someone",
+      "birthDate": "2019-04-23",
+      "gender": "F"
+    }
+  ]
+}
