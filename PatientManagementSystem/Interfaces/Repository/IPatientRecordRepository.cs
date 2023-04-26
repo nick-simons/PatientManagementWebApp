@@ -9,10 +9,10 @@ namespace PatientManagementSystem.Interfaces.Repository
 		Task<List<IPatientRecordModel>> GetAllPatientRecords();
 
         // Add patient record
-        Task<IPatientRecordModel> AddPatientRecords(IPatientRecordModel patientRecord);
+        Task<bool> AddPatientRecords(IPatientRecordModel patientRecord);
 
         // Edit patient record
-        Task UpdatePatientRecord(IPatientRecordModel patientRecord);
+        Task<bool> UpdatePatientRecord(IPatientRecordModel patientRecord);
 
         // Delete patient record
         Task DeletePatientRecord(int patientRecordId);

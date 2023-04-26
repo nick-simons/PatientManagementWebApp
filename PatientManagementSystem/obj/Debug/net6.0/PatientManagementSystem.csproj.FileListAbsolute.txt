@@ -92,3 +92,4 @@
 /Users/nicholassimons/Desktop/RethinkFirst Project/PatientManagementSystem/obj/Debug/net6.0/PatientManagementSystem.genruntimeconfig.cache
 /Users/nicholassimons/Desktop/RethinkFirst Project/PatientManagementSystem/obj/Debug/net6.0/ref/PatientManagementSystem.dll
 /Users/nicholassimons/Desktop/RethinkFirst Project/PatientManagementSystem/bin/Debug/net6.0/EmptyJSONFile.json
+/Users/nicholassimons/Desktop/RethinkFirst Project/PatientManagementSystem/bin/Debug/net6.0/Newtonsoft.Json.dll

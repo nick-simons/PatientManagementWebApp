@@ -7,11 +7,7 @@ namespace PatientManagementSystem.Interfaces.Manager
 	{
         Task<IEnumerable<IPatientRecordModel>> GetAllPatientRecords();
 
-        Task AddManyPatientRecords(List<PatientRecord> patientRecords);
-
-        Task<IPatientRecordModel> AddPatientRecord(IPatientRecordModel patientRecord);
-
-        Task<IPatientRecordModel> UpdatePatientRecord(IPatientRecordModel patientRecord);
+        Task<IEnumerable<IPatientRecordModel>> AddOrUpdateManyPatientRecords(List<PatientRecord> patientRecords);
 
         Task DeletePatientRecord(int id);
     }

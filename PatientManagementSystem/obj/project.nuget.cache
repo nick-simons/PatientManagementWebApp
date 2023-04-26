@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "jwgoYpZA0iEA8BeK/PzerKWJ1coKQVQrm0mWndOtvWiyc5gHKpgN/JbdswJWhDy53Uc1gcpdVGvZy82TlpdD0Q==",
+  "dgSpecHash": "U388OYaCRBu+kny7JWPEfgODhs4SIE3tLlPUnoEgOLsbrOeHtI6tm5PXal3o2oFOpqEy361kRj6toButHFn8cg==",
   "success": true,
   "projectFilePath": "/Users/nicholassimons/Desktop/RethinkFirst Project/PatientManagementSystem/PatientManagementSystem.csproj",
   "expectedPackageFiles": [
@@ -43,6 +43,7 @@
     "/Users/nicholassimons/.nuget/packages/microsoft.win32.registry/5.0.0/microsoft.win32.registry.5.0.0.nupkg.sha512",
     "/Users/nicholassimons/.nuget/packages/microsoft.win32.systemevents/5.0.0/microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "/Users/nicholassimons/.nuget/packages/mono.texttemplating/2.2.1/mono.texttemplating.2.2.1.nupkg.sha512",
+    "/Users/nicholassimons/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512",
     "/Users/nicholassimons/.nuget/packages/runtime.native.system.data.sqlclient.sni/4.7.0/runtime.native.system.data.sqlclient.sni.4.7.0.nupkg.sha512",
     "/Users/nicholassimons/.nuget/packages/runtime.win-arm64.runtime.native.system.data.sqlclient.sni/4.4.0/runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "/Users/nicholassimons/.nuget/packages/runtime.win-x64.runtime.native.system.data.sqlclient.sni/4.4.0/runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",

@@ -14,8 +14,22 @@ namespace PatientManagementSystem
 
         public static void Main(string[] args)
         {
+            var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
             var builder = WebApplication.CreateBuilder(args);
+
+            // Cors Configuratino
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy(name: "MyPolicy",
+                    policy =>
+                    {
+                        policy.WithOrigins("http://localhost:4200")
+                                .AllowAnyHeader()
+                                .AllowAnyMethod();
+                    });
+            });
+
 
             // Add services to the container
             builder.Services.AddDbContext<PatientRecordContext>(options =>
@@ -30,6 +44,7 @@ namespace PatientManagementSystem
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -40,6 +55,8 @@ namespace PatientManagementSystem
             }
 
             app.UseHttpsRedirection();
+
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseAuthorization();
 

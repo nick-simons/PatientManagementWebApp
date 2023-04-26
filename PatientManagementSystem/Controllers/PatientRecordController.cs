@@ -1,7 +1,11 @@
 ﻿using System.Data.SqlClient;
 using System.Reflection;
 using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using PatientManagementSystem.Interfaces.Manager;
 using PatientManagementSystem.Interfaces.Models;
@@ -10,6 +14,9 @@ namespace PatientManagementSystem.Controllers;
 
 [ApiController]
 [Route("api/patientrecords")]
+[EnableCors("MyPolicy")]
+[Produces("application/json")]
+[Consumes("application/json")]
 public class PatientManagementController : ControllerBase
 {
 
@@ -22,34 +29,18 @@ public class PatientManagementController : ControllerBase
         this.patientRecordManager = patientRecordManager;
     }
 
-    // GET: api/patientrecords
+    // Returns all patient records
     [HttpGet]
     public async Task<IEnumerable<IPatientRecordModel>> GetPatientRecords()
     {
         return await this.patientRecordManager.GetAllPatientRecords();
     }
 
-    // Takes in a CSV file and creates patient records for all users in the csv
+    // Takes in a list of patient records and saves them to the db
     [HttpPost]
-    public async Task AddPatientRecords([FromBody]List<PatientRecord> patientRecords)
-    { 
-        await this.patientRecordManager.AddManyPatientRecords(patientRecords);
-    }
-
-    // Updates individual patient record
-    [HttpPut]
-    [Route("{id}")]
-    public async Task<IPatientRecordModel> UpdatePatientRecord(int id, string firstName, string lastName, DateTime birthDate, char gender)
+    public async Task<IEnumerable<IPatientRecordModel>> AddOrUpdatePatientRecords([FromBody]List<PatientRecord> patientRecords)
     {
-        IPatientRecordModel patientRecord = new PatientRecord();
-
-        patientRecord.Id = id;
-        patientRecord.FirstName = firstName;
-        patientRecord.LastName = lastName;
-        patientRecord.BirthDate = birthDate;
-        patientRecord.Gender = gender;
-
-        return await this.patientRecordManager.UpdatePatientRecord(patientRecord);
+        return await this.patientRecordManager.AddOrUpdateManyPatientRecords(patientRecords);
     }
     
     // Deletes individual patient records
@@ -59,9 +50,6 @@ public class PatientManagementController : ControllerBase
     {
         await this.patientRecordManager.DeletePatientRecord(id);
     }
-    
-    
-    
 }
 
 

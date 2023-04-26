@@ -9,7 +9,7 @@ namespace PatientManagementSystem.Interfaces.Models
 
         public string? LastName { get; set; }
 
-        public DateTime? BirthDate { get; set; }
+        public DateTime BirthDate { get; set; }
 
         public char? Gender { get; set; }
     }

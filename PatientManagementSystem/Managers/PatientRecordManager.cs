@@ -26,27 +26,27 @@ namespace PatientManagementSystem.Managers
 			return patientRecords;
 		}
 
-        public async Task AddManyPatientRecords(List<PatientRecord> patientRecords)
+        public async Task<IEnumerable<IPatientRecordModel>> AddOrUpdateManyPatientRecords(List<PatientRecord> patientRecords)
 		{
+			List<PatientRecord> uploadedPatientRecords = new List<PatientRecord>();
+			bool uploadSuccess = false;
+
             foreach (var patientRecord in patientRecords)
             {
-                await this.patientRecordRepository.AddPatientRecords(patientRecord);
+				if(patientRecord.Id == -1)
+				{
+					uploadSuccess = await this.patientRecordRepository.AddPatientRecords(patientRecord);
+				} else {
+                    uploadSuccess = await this.patientRecordRepository.UpdatePatientRecord(patientRecord);
+                }
+
+				if(uploadSuccess == true)
+				{
+					uploadedPatientRecords.Add(patientRecord);
+				}
             }
-        }
 
-
-        public async Task<IPatientRecordModel> AddPatientRecord(IPatientRecordModel patientRecord)
-		{
-			patientRecord = await this.patientRecordRepository.AddPatientRecords(patientRecord);
-
-			return patientRecord;
-		}
-
-        public async Task<IPatientRecordModel> UpdatePatientRecord(IPatientRecordModel patientRecord)
-        {
-            await this.patientRecordRepository.UpdatePatientRecord(patientRecord);
-
-            return patientRecord;
+			return uploadedPatientRecords;
         }
 
 		public async Task DeletePatientRecord(int id)

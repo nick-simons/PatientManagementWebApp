@@ -58,9 +58,10 @@
             }
         }
 
-        public async Task<IPatientRecordModel> AddPatientRecords(IPatientRecordModel patientRecord)
+        public async Task<bool> AddPatientRecords(IPatientRecordModel patientRecord)
         {
             this.logger.Log(LogLevel.Information, $"Adding new patient");
+            bool uploadSuccess = false;
 
             try
             {
@@ -86,17 +87,19 @@
 
                     }
                 }
-                return patientRecord;
+                return uploadSuccess = true;
             }
             catch (SqlException)
             {
+                return uploadSuccess;
                 throw new Exception();
             }
         }
 
-        public async Task UpdatePatientRecord(IPatientRecordModel patientRecord)
+        public async Task<bool> UpdatePatientRecord(IPatientRecordModel patientRecord)
         { 
             this.logger.Log(LogLevel.Information, $"Getting All Patient Records");
+            bool uploadSuccess = false;
             try
             {
                 using (SqlConnection connection = new SqlConnection(this.connectionString))
@@ -116,9 +119,11 @@
                         await addCommand.ExecuteNonQueryAsync();
                     }
                 }
+                return uploadSuccess = true;
             }
             catch (SqlException)
             {
+                return uploadSuccess;
                 throw new Exception();
             }
         }
@@ -169,7 +174,7 @@
                         ? null
                         : reader.GetString(lastNameOrd),
                     BirthDate = reader.IsDBNull(birthDateOrd)
-                        ? new DateTime?()
+                        ? new DateTime()
                         : reader.GetDateTime(birthDateOrd),
                     Gender = reader.IsDBNull(genderOrd)
                         ? null
