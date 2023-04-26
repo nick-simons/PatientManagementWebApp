@@ -1,0 +1,65 @@
+<form class="form file__upload__form">
+  <h1 class="section-header">
+    Upload Patient Record Management CSV
+  </h1>
+  <div class="upload-description">
+  <p class="upload-description-text">-Add or update patient records</p>  
+  <p class="upload-description-text">-CSV Structure: id, first name, last name, birthdate, gender</p>  
+  <p class="upload-description-text">-To add new patient records - leave id value empty</p>  
+  <p class="upload-description-text">-To edit patient records - include patient id</p>
+</div>
+  <div class="form__group">
+    <label for="series">
+      <div class="form__input__custom">
+        <img
+          class="form__upload__icon"
+          src="../assets/upload.svg"
+          alt="upload"
+        />
+        <span class="button_text">Select a file</span>
+      </div>
+    </label>
+    <div class="file_upload_info">
+      <div class="form__input__hint" *ngIf="fileName && !uploadedPatientRecords">File Selected: {{ fileName }}</div>
+      <div class="form__input__success" *ngIf="uploadedPatientRecords">{{ uploadedPatientRecords }}</div>
+      <div class="form__input__hint" *ngIf="uploadedPatientRecords">Upload run at: {{ uploadTimestamp }}</div>
+      <div class="form__input__error" *ngIf="!fileTypeValid">
+        Please select valid file(*.csv)
+      </div>
+      <div class="form__input__hint" *ngIf="uploadFailed">
+        Failure on upload run at: {{ uploadTimestamp }}
+      </div>
+      <div class="form__input__error" *ngIf="uploadFailed">
+        CSV upload failed - please try again
+      </div>
+      <div class="form__input__error" *ngIf="uploadFailed">
+        Info: Must rename file to upload again
+      </div>
+      <div class="form__input__error" *ngIf="uploadFailed && csvErrors.length == 0">
+        Upload Error: {{ errorTitle }}
+      </div>
+      <div class="form__input__error" *ngIf="uploadFailed && csvErrors.length > 0">
+        CSV Errors:
+      </div>
+      <div id= "csv-error-list" class="form__input__error" *ngIf="csvErrors.length > 0">
+      </div>
+    </div>
+    <input
+      type="file"
+      class="form__input form__input--file"
+      id="series"
+      (change)="fileChange($event)"
+      accept=".csv"
+      [disabled]="uploadedPatientRecords"
+    />
+  </div>
+  <div class="form__group">
+    <button
+      type="button"
+      class="button button--primary"
+      (click)="uploadFormSubmit()"
+    >
+      {{btnVal}}
+    </button>
+  </div>
+</form>

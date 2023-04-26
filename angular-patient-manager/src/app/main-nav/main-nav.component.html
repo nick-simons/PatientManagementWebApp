@@ -1,0 +1,16 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Patient Management System</span>
+      <span class="spacer"></span>
+    </mat-toolbar>
+    <ng-content></ng-content>
+</mat-sidenav-container>
